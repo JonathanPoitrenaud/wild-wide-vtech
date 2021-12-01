@@ -1,5 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block content %}
+{% block title %}All programs{% endblock %}
 
+{% block body %}
+    <h1>All TV Show from program table :</h1>
+
+    {% for program in programs %}
+        <div>
+            <h2>{{ loop.index }} / {{ program.title }} - Category : {{ program.category.name }}</h2>
+            <p>{{ program.summary }}</p>
+            <a href="{{ path('program_show', { id: program.id }) }}">Watch TV Show</a>
+        </div>
+    {% else %}
+        None TV Show find.
+    {% endfor %}
+
+    <a href="{{ path('app_index') }}">
+        Home
+    </a>
 {% endblock %}
