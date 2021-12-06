@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid mt-2 text-center">
+        <div class="text-dark">
+            <h1>{{ program.title }}</h1>
+            <p>{{ season.description }}</p>
+            <p>Episode : {{ episode.number }} - {{ episode.title }}</p>
+        </div>
+        <div>
+            <a href="{{ path('program_show_season', {program: program.id, season: program.id}) }}">Back to season</a>
+        </div>
+        <div>
+            <a href="{{ path('program_index') }}">Back to program's</a>
+        </div>
+    </div>
+{% endblock %}

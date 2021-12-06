@@ -3,18 +3,22 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
-    <h1>All TV Show from program table :</h1>
-
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Category : {{ program.category.name }}</h2>
-            <p>{{ program.summary }}</p>
-            <a href="{{ path('program_show', { id: program.id }) }}">Watch TV Show</a>
-        </div>
-    {% else %}
-        None TV Show find.
-    {% endfor %}
-
+    <div class="container text-center">
+        <h1>All TV Show from program table :</h1>
+        {% for program in programs %}
+            <div class="card col-6">
+                <img src="{{ program.poster }}" class="card-img-top" alt="...">
+                <div class="card-body border-1">
+                    <h5 class="card-title">{{ program.title }}</h5>
+                    <p class="card-text">Category: {{ program.category.name }}</p>
+                    <p class="card-text">{{ program.summary }}</p>
+                    <a href="{{ path("program_show", {program: program.id}) }}" class="btn btn-success">Watch the Tv Show</a>
+                </div>
+            </div>
+        {% else %}
+            None TV Show find.
+        {% endfor %}
+    </div>
     <a href="{{ path('app_index') }}">
         Home
     </a>
