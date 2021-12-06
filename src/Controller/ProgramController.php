@@ -56,7 +56,7 @@ class ProgramController extends AbstractController
     /**
      * @Route("/{program}/seasons/{season}", name="show_season")
      */
-    public function showSeason(Program $program, Season $season)
+    public function showSeason(Program $program, Season $season): Response
     {
         $episodes = $this->getDoctrine()
             ->getRepository(Episode::class)
@@ -72,7 +72,7 @@ class ProgramController extends AbstractController
     /**
      * @Route("/{program}/seasons/{season}/episode/{episode}", name="episode_show")
      */
-    public function showEpisode(Program $program, Season $season, Episode $episode)
+    public function showEpisode(Program $program, Season $season, Episode $episode): Response
     {
         return $this->render('program/episode_show.html.twig',[
             'program'   => $program,
