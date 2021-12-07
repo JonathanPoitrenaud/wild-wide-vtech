@@ -4,7 +4,8 @@
 
 {% block body %}
     <div class="container text-center">
-        <h1>All TV Show from program table :</h1>
+        <h1>All TV Show</h1>
+        <a href="{{ path("program_new") }}">New Tv Show</a>
         {% for program in programs %}
             <div class="card col-6">
                 <img src="{{ program.poster }}" class="card-img-top" alt="...">

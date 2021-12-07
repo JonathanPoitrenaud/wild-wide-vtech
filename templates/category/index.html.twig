@@ -3,8 +3,9 @@
 {% block title %}All Categories{% endblock %}
 
 {% block body %}
-    <h1>All categories from category table :</h1>
-
+<div class="container text-dark text-center">
+    <h1>All categories</h1>
+    <a href="{{ path('category_new') }}">New category</a>
     {% for category in categories %}
         <div>
             <h2>{{ loop.index }} Category : {{ category.name }}</h2>
@@ -17,4 +18,5 @@
     <a href="{{ path('app_index') }}">
         Home
     </a>
+</div>
 {% endblock %}
