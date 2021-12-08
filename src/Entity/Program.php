@@ -6,9 +6,16 @@ use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
+ * @UniqueEntity(
+ *      fields={"title"},
+ *     errorPath="title",
+ *     message="This title already exist."
+ * )
  */
 class Program
 {
@@ -21,11 +28,14 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="I can't be empty")
+     * @Assert\Length(max=255, maxMessage="The program {{ value }} is too long, and should not be more than {{ limit }} caracteres")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="I can't be empty")
      */
     private $summary;
 
